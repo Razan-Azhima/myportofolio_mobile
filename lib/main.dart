@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:myportofolio_mobile/screens/education_form.dart';
 import 'package:myportofolio_mobile/screens/menu.dart';
 import 'package:myportofolio_mobile/screens/project_form.dart';
 
@@ -23,6 +24,7 @@ class MyApp extends StatelessWidget {
       home: MyHomePage(),
       routes: {
         '/add-project': (context) => const ProjectFormPage(),
+        '/add-edu': (context) => const EducationFormPage(),
       },
     );
   }

@@ -50,6 +50,15 @@ class LeftDrawer extends StatelessWidget {
               Navigator.pushNamed(context, '/add-project');
             },
           ),
+          ListTile(
+            leading: const Icon(Icons.book_sharp),
+            title: const Text('Add Education'),
+
+            onTap: () {
+              Navigator.pop(context);
+              Navigator.pushNamed(context, '/add-edu');
+            },
+          ),
         ],
       ),
     );

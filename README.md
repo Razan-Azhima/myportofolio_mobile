@@ -55,3 +55,7 @@ ScaffoldMessenger.of(context) mengakses layanan untuk menampilkan SnackBar
 Hot reload -> merefresh perubahan kode tanpa nge build ulang. State aplikasi dipertahankan
 Hot restart -> memulai ulang aplikasi dari awal, sehingga ke reset state aplikasinya
 Full restart -> stop lalu mulai dari ulang aplikasi dari awal. Perli dilakukan kalau ada perubahan native atau konfigurasi
+
+
+### TUGAS 8
+
