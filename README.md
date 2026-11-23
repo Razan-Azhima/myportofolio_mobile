@@ -59,3 +59,58 @@ Full restart -> stop lalu mulai dari ulang aplikasi dari awal. Perli dilakukan k
 
 ### TUGAS 8
 
+1. (diambil dari tutorial 9)
+- push() -> menambah suatu route ke dalam stack (LIFO Stack) route yang dikelola Navigator
+- pop() -> menghapus route yang sedang ditampilkan kepada pengguna (atau dalam kata lain, route yang berada pada paling atas stack) dari stack route yang dikelola oleh Navigator.
+mirip method Stack untuk yg diatas
+- pushReplacement() -> menghapus route yang sedang ditampilkan kepada pengguna dan menggantinya dengan suatu route. Method ini menyebabkan aplikasi untuk berpindah dari route yang sedang ditampilkan kepada pengguna ke suatu route yang diberikan
+
+- Kartu Aksi -> membuka formulir baned route -> Navigator.pushNamed()
+    say: Navigator.pushNamed(context, '/add-edu');
+    route '/add-edu' dipetakan ke EducationFormPage di main.dart. pushNamed() membuka formulir di atas halaman saat ini
+
+- Opsi Home di drawer memakai pushReplacement() dengan MyHomePage().
+    - mengganti halaman aktif dengan halaman utama (home)
+
+2. 
+Scaffold -> menyediakan struktur visual dasar halaman (AppBar, Body, SnackBar)
+AppBar -> ditempatkan bagian atas
+Drawer -> menyediakan navigasi yang sama, dan konten halaman diletakkan di body.
+dengan memakai LeftDrawer bersama pada setiap scaffold, pengguna bisa pindah halaman dengan cara seragam
+
+cth: penggunaan warna tema di lebih dari satu halaman:
+    appBar: AppBar(
+        title: const Text("Judul Halaman"),
+        backgroundColor: Theme.of(context).colorScheme.primary,
+        foregroundColor: Colors.white,
+    ),
+    
+3. 
+tata letak memakai Column agar input tersusun secara berurutan dari atas ke bawah. 
+untuk field tanggal di education_form di taruh di row agar berdampingan, dengan Expanded membagi ruang yang tersedia secara proporsional
+Padding -> memberi jarak sekeliling field
+SizedBox() -> memisahkan kedua field tanggal agar tidak berhimpitan
+SingleChildScrollView memungkinkan isi formulir digulir ketika tinggi layar terbatas
+
+4. 
+GlobalKey<FormState> -> menghubungkan kode ke FormState milik form, sehingga tombol bisa melakukan validasi
+validator -> memeriksa nilai field -> kembalikan string jika nilainya tidak valid atau null jika valid
+validate() -> menjalankan semua validator. jika ada yang gagal, hasilnya false; jika semua lolos, hasilnya true
+
+cth:
+    validator: (value) {
+    if (value == null || value.trim().isEmpty) {
+        return "Nama institusi tidak boleh kosong";
+    }
+    return null;
+    },
+
+    Memilih jenis input atau papan ketik saja belum cukup untuk menjamin data valid. 
+    keyboardType (ketikkan) hanya memberi petunjuk papan ketik yang ditampilkan; 
+    pengguna masih dapat memasukkan data dengan cara lain. Oleh karena itu masih perlu divalidasi saat nilai form disimpan 
+
+
+
+
+AI Disclosure: Saya memakai LLM ChatGPT berupa menganalisis mengapa kode buatan saya error dan mengkoreksi secara manual sesuai dengan saran AI.
+
