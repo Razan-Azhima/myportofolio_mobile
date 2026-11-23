@@ -18,10 +18,9 @@ class ItemCard extends StatelessWidget {
         onTap: () {
           // Menampilkan SnackBar dengan pesan interaktif.
           if (item.name == "Tambah Proyek") {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => const ProjectFormPage()),
-            );
+            Navigator.pushNamed(context, '/add-project');
+          } else if (item.name == "Tambah Edukasi") {
+            Navigator.pushNamed(context, '/add-edu');
           } else {
             ScaffoldMessenger.of(context)
               ..hideCurrentSnackBar()

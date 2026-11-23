@@ -18,27 +18,25 @@ class _EducationFormPageState extends State<EducationFormPage> {
   bool _isStill = false;
   String _period = "";
 
-  String _formatDate(DateTime date){
+  String _formatDate(DateTime date) {
     return "${date.day}/${date.month}/${date.year}";
   }
 
   void _updatePeriod() {
-  if (_startDate == null) {
-    _period = "";
-    return;
+    if (_startDate == null) {
+      _period = "";
+      return;
+    }
+
+    final start = _formatDate(_startDate!);
+    final end = _isStill
+        ? "Sekarang"
+        : _endDate == null
+        ? ""
+        : _formatDate(_endDate!);
+
+    _period = "$start - $end";
   }
-
-  final start = _formatDate(_startDate!);
-  final end = _isStill
-      ? "Sekarang"
-      : _endDate == null
-          ? ""
-          : _formatDate(_endDate!);
-
-  _period = "$start - $end";
-}
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -212,11 +210,11 @@ class _EducationFormPageState extends State<EducationFormPage> {
                     if (_isStill) {
                       _endDate = null;
                     }
+
+                    _updatePeriod();
                   });
                 },
               ),
-
-
 
               // tombol simpan
               Align(
@@ -228,12 +226,14 @@ class _EducationFormPageState extends State<EducationFormPage> {
                       backgroundColor: WidgetStateProperty.all(Colors.indigo),
                     ),
                     onPressed: () {
-                      if (_formKey.currentState!.validate()){
+                      if (_formKey.currentState!.validate()) {
                         showDialog(
                           context: context,
                           builder: (context) {
                             return AlertDialog(
-                              title: const Text("Edukasi berhasil ditambahkan!"),
+                              title: const Text(
+                                "Edukasi berhasil ditambahkan!",
+                              ),
                               content: SingleChildScrollView(
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -242,7 +242,7 @@ class _EducationFormPageState extends State<EducationFormPage> {
                                     Text('Prodi/Keminatan: $_degree'),
                                     Text('Periode: $_period'),
                                   ],
-                                )
+                                ),
                               ),
                               actions: [
                                 TextButton(
@@ -254,7 +254,7 @@ class _EducationFormPageState extends State<EducationFormPage> {
                                 ),
                               ],
                             );
-                          }
+                          },
                         );
                       }
                     },
@@ -262,9 +262,9 @@ class _EducationFormPageState extends State<EducationFormPage> {
                       "Save",
                       style: TextStyle(color: Colors.white),
                     ),
-                  )
-                )
-              )
+                  ),
+                ),
+              ),
             ],
           ),
         ),

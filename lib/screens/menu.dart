@@ -12,6 +12,7 @@ class MyHomePage extends StatelessWidget {
     ItemHomepage("Lihat Proyek", Icons.folder, color: Colors.pink),
     ItemHomepage("Tambah Proyek", Icons.add_circle, color: Colors.cyan),
     ItemHomepage("Logout", Icons.logout, color: Colors.green),
+    ItemHomepage("Tambah Edukasi", Icons.book_sharp , color: Colors.yellow),
   ];
 
   @override
