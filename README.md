@@ -109,8 +109,24 @@ cth:
     keyboardType (ketikkan) hanya memberi petunjuk papan ketik yang ditampilkan; 
     pengguna masih dapat memasukkan data dengan cara lain. Oleh karena itu masih perlu divalidasi saat nilai form disimpan 
 
+### TUTORIAL 10: Tambah Experience
 
+Form **Tambah Pengalaman** mengirim data ke endpoint Django
+`POST /api/v1/experiences/`. Login menggunakan username dan password Django
+terlebih dahulu; token API disimpan di memori aplikasi dan dicabut saat logout.
+Hanya akun pemilik/superuser yang diizinkan membuat Experience.
+
+Sebelum menjalankan aplikasi:
+
+1. Di proyek Django, jalankan `python manage.py migrate` agar tabel token dibuat.
+2. Jalankan backend pada port `8000`. Untuk emulator Android, host
+   `10.0.2.2` sudah dikonfigurasi sebagai alamat lokal backend.
+3. Jalankan Flutter dengan URL API default, atau atur URL lain, misalnya:
+   `flutter run --dart-define=API_BASE_URL=http://localhost:8000`
+
+Kategori, field, dan serialisasi JSON mengikuti model `Experience` Django.
+Tanggal mulai diisi otomatis oleh backend; tanggal selesai bersifat opsional
+dan dibiarkan kosong untuk pengalaman yang masih berlangsung.
 
 
 AI Disclosure: Saya memakai LLM ChatGPT berupa menganalisis mengapa kode buatan saya error dan mengkoreksi secara manual sesuai dengan saran AI.
-

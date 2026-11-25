@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:myportofolio_mobile/screens/menu.dart';
+import 'package:myportofolio_mobile/services/auth_state.dart';
+import 'package:provider/provider.dart';
 
 class LeftDrawer extends StatelessWidget {
   const LeftDrawer({super.key});
@@ -57,6 +59,17 @@ class LeftDrawer extends StatelessWidget {
             onTap: () {
               Navigator.pop(context);
               Navigator.pushNamed(context, '/add-edu');
+            },
+          ),
+          ListTile(
+            leading: const Icon(Icons.work_history),
+            title: const Text('Add Experience'),
+            onTap: () {
+              Navigator.pop(context);
+              final route = context.read<AuthState>().isAuthenticated
+                  ? '/add-experience'
+                  : '/login';
+              Navigator.pushNamed(context, route);
             },
           ),
         ],
